@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="NewCalculator.css">
+</head>
+
+<body>
+    <div class="outer">
+        <input type="text" class="child inner" id="inputBox" placeholder="000" readonly>
+        <button class="child dark-gray">AC</button>
+        <button class="child dark-gray">DEL</button>
+        <button class="child dark-gray">%</button>
+        <button class="child orange">/</button>
+        <button class="child light-gray">7</button>
+        <button class="child light-gray">8</button>
+        <button class="child light-gray">9</button>
+        <button class="child orange">*</button>
+        <button class="child light-gray">4</button>
+        <button class="child light-gray">5</button>
+        <button class="child light-gray">6</button>
+        <button class="child orange">-</button>
+        <button class="child light-gray">1</button>
+        <button class="child light-gray">2</button>
+        <button class="child light-gray">3</button>
+        <button class="child orange">+</button>
+        <button class="child zero light-gray">0</button>
+        <button class="child light-gray">.</button>
+        <button class="child orange">=</button>
+    </div>
+    <script>
+        let display = document.getElementById('inputBox');
+        let buttons = document.querySelectorAll('button');
+        let buttonsArray = Array.from(buttons);
+        let string = '';
+        buttonsArray.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                if (e.target.innerHTML == 'DEL') {
+                    string = string.substring(0, string.length - 1);
+                    display.value = string;
+                } else if (e.target.innerHTML == 'AC') {
+                    string = " ";
+                    display.value = string;
+                } else if (e.target.innerHTML == '=') {
+                    string = eval(string);
+                    display.value = string;
+                } else {
+                    string += e.target.innerHTML;
+                    display.value = string;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
